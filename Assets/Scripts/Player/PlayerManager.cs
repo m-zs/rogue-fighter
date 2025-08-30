@@ -1,25 +1,21 @@
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerMovement))]
-[RequireComponent(typeof(Creature))]
 public class PlayerManager : MonoBehaviour
 {
     private PlayerMovement playerMovement;
     private InputManager inputManager;
-    private Creature creature;
+    private StatsController statsController;
     
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
         inputManager = GetComponent<InputManager>();
-        creature = GetComponent<Creature>();
+        statsController = GetComponent<StatsController>();
     }
 
     private void Update()
     {
-        /*if (creature.CanPerformAction(CreatureAction.Move))
-        {
-            playerMovement.MoveCharacter(creature.MovementSpeed);
-        }*/
+        playerMovement.MoveCharacter(statsController.stats.GetStat(Stat.MovementSpeed));
     }
 }

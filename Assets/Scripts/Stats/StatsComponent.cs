@@ -1,6 +1,9 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
+[Serializable]
 public enum Stat
 {
     Strength,
@@ -16,6 +19,7 @@ public enum Stat
     ElementalDefence
 }
 
+[Serializable]
 public struct Stats
 {
     public int Strength;
@@ -25,44 +29,102 @@ public struct Stats
     public int Luck;
     public int Size;
 
-    public float MovementSpeed;
+    public int MovementSpeed;
 
-    public float MaxPhysicalDefence;
-    public float PhysicalDefence;
+    public int MaxPhysicalDefence;
+    public int PhysicalDefence;
 
-    public float MaxElementalDefence;
-    public float ElementalDefence;
+    public int MaxElementalDefence;
+    public int ElementalDefence;
 }
 
 public class StatsComponent : MonoBehaviour
 {
+    [SerializeField] private List<StatProcessorMapping> statProcessors = new List<StatProcessorMapping>();
     [SerializeField] private Stats baseStats;
-    private Stats currentStats;
+    private Stats currentStats = new();
+    private Stats statsCache = new();
+
+    [Serializable]
+    public class StatProcessorMapping
+    {
+        public Stat stat;
+        [SerializeReference] public StatProcessor processor;
+    }
+
+    private void BuildStatsCache()
+    {
+        foreach (var statProcessor in statProcessors.Where(statProcessor => statProcessor.processor != null))
+        {
+            switch (statProcessor.stat)
+            {
+                case Stat.Strength:
+                    statsCache.Strength = Mathf.CeilToInt(statProcessor.processor.Compute(currentStats));
+                    break;
+                case Stat.Dexterity:
+                    statsCache.Dexterity = Mathf.CeilToInt(statProcessor.processor.Compute(currentStats));
+                    break;
+                case Stat.Intelligence:
+                    statsCache.Intelligence = Mathf.CeilToInt(statProcessor.processor.Compute(currentStats));   
+                    break;
+                case Stat.Endurance:
+                    statsCache.Endurance = Mathf.CeilToInt(statProcessor.processor.Compute(currentStats));
+                    break;
+                case Stat.Luck:
+                    statsCache.Luck = Mathf.CeilToInt(statProcessor.processor.Compute(currentStats));
+                    break;
+                case Stat.Size:
+                    statsCache.Size = Mathf.CeilToInt(statProcessor.processor.Compute(currentStats));
+                    break;
+                case Stat.MovementSpeed:
+                    statsCache.MovementSpeed = Mathf.CeilToInt(statProcessor.processor.Compute(currentStats));
+                    break;
+                case Stat.MaxPhysicalDefence:
+                    statsCache.MaxPhysicalDefence = Mathf.CeilToInt(statProcessor.processor.Compute(currentStats));
+                    break;
+                case Stat.PhysicalDefence:
+                    statsCache.PhysicalDefence = Mathf.CeilToInt(statProcessor.processor.Compute(currentStats));
+                    break;
+                case Stat.MaxElementalDefence:
+                    statsCache.MaxElementalDefence = Mathf.CeilToInt(statProcessor.processor.Compute(currentStats));
+                    break;
+                case Stat.ElementalDefence:
+                    statsCache.ElementalDefence = Mathf.CeilToInt(statProcessor.processor.Compute(currentStats));
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            };
+        }
+    }
+
+    public int GetStat(Stat stat)
+    {
+        return stat switch
+        {
+            Stat.Strength => statsCache.Strength,
+            Stat.Dexterity => statsCache.Dexterity,
+            Stat.Intelligence => statsCache.Intelligence,
+            Stat.Endurance => statsCache.Endurance,
+            Stat.Luck => statsCache.Luck,
+            Stat.Size => statsCache.Size,
+            Stat.MovementSpeed => statsCache.MovementSpeed,
+            Stat.MaxPhysicalDefence => statsCache.MaxPhysicalDefence,
+            Stat.PhysicalDefence => statsCache.PhysicalDefence,
+            Stat.MaxElementalDefence => statsCache.MaxElementalDefence,
+            Stat.ElementalDefence => statsCache.ElementalDefence,
+            _ => throw new ArgumentOutOfRangeException()
+        };
+    }
 
     public Stats CurrentStats()
     {
-        var stats = currentStats;
-
-        stats.Strength = baseStats.Strength;
-        stats.Dexterity = baseStats.Dexterity;
-        stats.Intelligence = baseStats.Intelligence;
-        stats.Endurance = baseStats.Endurance;
-        stats.Luck = baseStats.Luck;
-        stats.Size = baseStats.Size;
-
-        stats.MovementSpeed = baseStats.MovementSpeed + baseStats.Dexterity;
-        stats.MaxPhysicalDefence = baseStats.MaxPhysicalDefence;
-        stats.MaxElementalDefence = baseStats.MaxElementalDefence;
-
-        stats.PhysicalDefence = Mathf.Min(baseStats.PhysicalDefence + baseStats.Endurance, baseStats.MaxPhysicalDefence);
-        stats.ElementalDefence = Mathf.Min(baseStats.ElementalDefence + baseStats.Endurance, baseStats.MaxElementalDefence);
-
-        return stats;
+        return statsCache;
     }
     
     private void Awake()
     {
         currentStats = baseStats;
+        BuildStatsCache();
     }
 
     public void IncreaseStat(Stat stat, int amount)
@@ -105,5 +167,6 @@ public class StatsComponent : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException(nameof(stat), stat, null);
         }
+        BuildStatsCache();
     }
 }
