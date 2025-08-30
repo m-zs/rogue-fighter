@@ -17,9 +17,9 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
-        if (creature.CanPerformAction(CreatureAction.Move))
+        /*if (creature.CanPerformAction(CreatureAction.Move))
         {
             playerMovement.MoveCharacter(creature.MovementSpeed);
-        }
+        }*/
     }
 }
