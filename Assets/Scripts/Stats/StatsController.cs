@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(HealthComponent))]
@@ -17,10 +16,10 @@ public class StatsController : MonoBehaviour
         stats = GetComponent<StatsComponent>();
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
-        
+        health.SetMaxHealth(health.BaseMaxHealth + stats.GetStat(Stat.Endurance), true);
+        mana.SetMaxMana(mana.BaseMaxMana + stats.GetStat(Stat.Intelligence), true);
     }
 
     // Update is called once per frame

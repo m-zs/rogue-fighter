@@ -20,7 +20,6 @@ public abstract class OperationPayload
 
     public abstract float GetValue(Stats stats);
 }
-
 [System.Serializable]
 public class OperationStatPayload : OperationPayload
 {

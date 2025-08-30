@@ -20,6 +20,9 @@ GameObject:
   - component: {fileID: -3375453330577547115}
   - component: {fileID: -1098162426163303056}
   - component: {fileID: 3330640253661027952}
+  - component: {fileID: -806257973326195929}
+  - component: {fileID: 6074722076171921135}
+  - component: {fileID: 4446061209456396589}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -340,6 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1edfbb408186fdc45b63dfe2faf1ddde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
+  baseMaxHealth: 100
   maxHealth: 100
   health: 100
   isDead: 0
@@ -355,6 +359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f1f53a42a67aaa468a1b3db5f27f79a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ManaComponent
+  baseMaxMana: 100
   maxMana: 100
   mana: 100
 --- !u!114 &-1098162426163303056
@@ -416,3 +421,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d78a40526e3228488355186144af50b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatsController
+  health: {fileID: 0}
+  mana: {fileID: 0}
+  stats: {fileID: 0}
+--- !u!114 &-806257973326195929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8157134041742396166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 402a40874d980104a962810d885e8216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActionsController
+--- !u!114 &6074722076171921135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8157134041742396166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff076394d294b8e44bc038660bfcfaeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatusController
+--- !u!114 &4446061209456396589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8157134041742396166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b88445232f870354fb51155fd6699acb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageController
