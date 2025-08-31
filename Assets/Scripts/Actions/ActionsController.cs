@@ -11,7 +11,8 @@ public enum CharacterAction
     Use,
     DealDamage,
     TakeDamage,
-    Die
+    Die,
+    GetModifier
 }
 
 public class ActionsController : MonoBehaviour
@@ -62,6 +63,7 @@ public class ActionsController : MonoBehaviour
             CharacterAction.Jump => statsController.stats.GetStat(Stat.MovementSpeed) > 0 && !statusController.HasStatusType(StatusType.Stun),
             CharacterAction.Dash => statsController.stats.GetStat(Stat.MovementSpeed) > 0 && !statusController.HasStatusType(StatusType.Stun),
             CharacterAction.Move => statsController.stats.GetStat(Stat.MovementSpeed) > 0 && !statusController.HasStatusType(StatusType.Stun),
+            CharacterAction.GetModifier => !statsController.health.IsDead,
             _ => true
         };
     }

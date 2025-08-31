@@ -375,28 +375,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatsComponent
   statProcessors:
-  - stat: 0
-    processor: {fileID: 11400000, guid: 48061a2eb3d105845993bfb484c8706b, type: 2}
-  - stat: 1
-    processor: {fileID: 11400000, guid: 65ef2f1f8bf210440b8d74e8bd39b16d, type: 2}
-  - stat: 2
-    processor: {fileID: 11400000, guid: f15be2f81380f45498aa1069a58e618b, type: 2}
-  - stat: 3
-    processor: {fileID: 11400000, guid: ea121aae154458441b7cf0866ecd9948, type: 2}
-  - stat: 4
-    processor: {fileID: 11400000, guid: fd8e23a415761c84abdc3e751b45ba4c, type: 2}
-  - stat: 5
-    processor: {fileID: 11400000, guid: 24347c7574d5c9744af5b63196049fa8, type: 2}
-  - stat: 6
-    processor: {fileID: 11400000, guid: f79191ffd50db72468b5a3591668e661, type: 2}
-  - stat: 7
-    processor: {fileID: 11400000, guid: fdba1e5492038894aa8baa077762d987, type: 2}
-  - stat: 9
-    processor: {fileID: 11400000, guid: ef3a4ffad44a3d243b33d0adbe905851, type: 2}
-  - stat: 10
-    processor: {fileID: 11400000, guid: fb229988770d27641be0a71b67c33440, type: 2}
-  - stat: 8
-    processor: {fileID: 11400000, guid: 188a3337ce4cb5546a8b3733fb5d0ed0, type: 2}
+    _serializedList:
+    - Key: 0
+      Value:
+        stat: 0
+        processor: {fileID: 11400000, guid: 48061a2eb3d105845993bfb484c8706b, type: 2}
+    - Key: 10
+      Value:
+        stat: 10
+        processor: {fileID: 11400000, guid: fb229988770d27641be0a71b67c33440, type: 2}
+    - Key: 9
+      Value:
+        stat: 9
+        processor: {fileID: 11400000, guid: ef3a4ffad44a3d243b33d0adbe905851, type: 2}
+    - Key: 1
+      Value:
+        stat: 1
+        processor: {fileID: 11400000, guid: 65ef2f1f8bf210440b8d74e8bd39b16d, type: 2}
+    - Key: 2
+      Value:
+        stat: 2
+        processor: {fileID: 11400000, guid: f15be2f81380f45498aa1069a58e618b, type: 2}
+    - Key: 3
+      Value:
+        stat: 3
+        processor: {fileID: 11400000, guid: ea121aae154458441b7cf0866ecd9948, type: 2}
+    - Key: 4
+      Value:
+        stat: 4
+        processor: {fileID: 11400000, guid: fd8e23a415761c84abdc3e751b45ba4c, type: 2}
+    - Key: 5
+      Value:
+        stat: 5
+        processor: {fileID: 11400000, guid: 24347c7574d5c9744af5b63196049fa8, type: 2}
+    - Key: 6
+      Value:
+        stat: 6
+        processor: {fileID: 11400000, guid: f79191ffd50db72468b5a3591668e661, type: 2}
+    - Key: 7
+      Value:
+        stat: 7
+        processor: {fileID: 11400000, guid: fdba1e5492038894aa8baa077762d987, type: 2}
+    - Key: 8
+      Value:
+        stat: 8
+        processor: {fileID: 11400000, guid: 188a3337ce4cb5546a8b3733fb5d0ed0, type: 2}
   baseStats:
     Strength: 10
     Dexterity: 10

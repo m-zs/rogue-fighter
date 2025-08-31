@@ -19,7 +19,6 @@ public class DamageController : MonoBehaviour
 {
     private StatsController statsController;
     private ActionsController actionsController;
-
     private void Start()
     {
         statsController = GetComponent<StatsController>();
